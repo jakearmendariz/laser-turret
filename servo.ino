@@ -21,6 +21,9 @@ void loop() {
 
 void SerialEvent(){
   serialData = Serial.readString();
+
+  serX.write(parseDataX(serialData));
+  serY.write(parseDataY(serialData));
 }
 
 int parseDataX(String data){
@@ -31,7 +34,7 @@ int parseDataX(String data){
 }
 
 
-int parseDataX(String data){
+int parseDataY(String data){
   data.remove(0, data.indexOf("Y")+1);
 
   return data.toInt();
